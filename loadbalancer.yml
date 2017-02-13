@@ -1,6 +1,6 @@
 --- # Load balancer
 
-- hosts: awstest
+- hosts: change_me
   remote_user: ansible
   become: yes
   become_method: sudo
