@@ -3,3 +3,5 @@ This playbook will attempt to install Apache2 and transfer configuration from ou
 For usage, just go into the Loadbalancer directory and run 'ansible-playbook loadbalancer.yml' (for debugging output, add -vvv).
 
 This will not add an /etc/hosts file (yet) or setup iptables.
+
+Note: No files directory has been added for security reasons.
