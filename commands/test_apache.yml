@@ -1,0 +1,6 @@
+- name: Test the web server
+  shell: curl http://localhost
+  register: result
+
+- name: Display the results
+  debug: var=result

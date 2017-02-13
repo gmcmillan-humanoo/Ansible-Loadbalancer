@@ -1,0 +1,22 @@
+- name: Set permissions on /var/www/html/site
+  file:
+    path: /var/www/html/site
+    owner: root
+    group: root
+    mode: 0755
+    recurse: yes
+
+- name: Set permission on humanoo_com_ssl folder
+  file:
+    path: /etc/apache2/humanoo_com_ssl
+    state: directory
+    mode: 0755
+
+- name: Check permissions on humanoo_com_ssl contents
+  file:
+    path: /etc/apache2/humanoo_com_ssl
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+    recurse: yes

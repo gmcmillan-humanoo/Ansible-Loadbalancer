@@ -1,0 +1,33 @@
+- name: Copy workers.properties file to /etc/libapache2-mod-jk
+  copy:
+    src: "{{ src_dir }}/workers.properties"
+    dest: /etc/libapache2-mod-jk/workers.properties
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy the sites-available conf file
+  copy:
+    src: "{{ src_dir }}/000-default.conf"
+    dest: /etc/apache2/sites-available/000-default.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy the Apache configuration file to nodes
+  copy:
+     src: "{{ src_dir }}/apache2.conf"
+     dest: /etc/apache2.conf
+     owner: root
+     group: root
+     mode: 0644
+
+- name: Copy the site.tgz to the remote node at /var/www/html and extract
+  unarchive:
+     src: "{{ src_dir }}/site.tgz"
+     dest: /var/www/html/
+
+- name: Copy the ssl certificates to the nodes and extract
+  unarchive:
+     src: "{{ src_dir }}/humanoo_com_ssl.tgz"
+     dest: /etc/apache2/
