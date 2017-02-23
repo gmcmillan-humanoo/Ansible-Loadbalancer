@@ -1,6 +1,6 @@
 --- # Load balancer
 
-- hosts: change_me
+- hosts: strato
   remote_user: ansible
   become: yes
   become_method: sudo
@@ -10,7 +10,8 @@
   - variables/apache2_variables.yml
   tasks:
     - include: packages/apache2.yml
-    - include: commands/copy_apache_configs.yml
-    - include: commands/set_apache_permissions.yml
+    - include: tasks/copy_apache_configs.yml
+    - include: tasks/enable_apache_mods.yml
+    - include: tasks/set_apache_permissions.yml
     - include: handler/restart_apache.yml
-    - include: commands/test_apache.yml
+    - include: tasks/test_apache.yml

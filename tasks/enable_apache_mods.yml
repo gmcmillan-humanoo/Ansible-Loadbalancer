@@ -1,0 +1,16 @@
+- name: Enable Apache modules
+  apache2_module: name={{ item}} state=present
+  with_items:
+    - jk
+    - ssl
+    - rewrite
+    - actions
+    - auth_basic
+    - dir
+   # - cgi
+    - headers
+    - include
+    - socache_shmcb
+  notify: restart apache2
+
+

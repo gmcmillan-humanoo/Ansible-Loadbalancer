@@ -1,0 +1,25 @@
+- name: Install the Apache web server
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - apache2
+    - libapache2-mod-jk
+    - libapache2-mod-perl2
+    - libapache2-modsecurity
+    - libapache2-reload-perl
+
+- name: Enable Apache modules
+  apache2_module: name={{ item}} state=present
+  with_items:
+    - jk
+    - ssl
+    - rewrite
+    - actions
+    - auth_basic
+    - dir
+   # - cgi
+    - headers
+    - include
+    - socache_shmcb
+  notify: restart apache2
+
+

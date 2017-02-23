@@ -6,6 +6,15 @@
     group: root
     mode: 0644
 
+
+- name: Copy the httpd-jk.conf file to the nodes
+  copy:
+     src: "{{ src_dir }}/jk.conf"
+     dest: /etc/libapache2-mod-jk/jk.conf
+     owner: root
+     group: root
+     mode: 0644
+
 - name: Copy the sites-available conf file
   copy:
     src: "{{ src_dir }}/000-default.conf"
